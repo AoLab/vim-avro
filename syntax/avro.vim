@@ -19,7 +19,7 @@ if !exists("main_syntax")
 endif
 
 " Syntax: Strings {{{2
-syn region  jsonString    start=+"+  skip=+\\\\\|\\"+  end=+"+  contains=jsonEscape, avroTypes
+syn region  jsonString    start=+"+  skip=+\\\\\|\\"+  end=+"+  contains=jsonEscape, avroTypes, avroKeywords
 " Syntax: JSON does not allow strings with single quotes, unlike JavaScript.
 syn region  jsonStringSQ  start=+'+  skip=+\\\\\|\\"+  end=+'+
 
@@ -62,6 +62,20 @@ syn match avroTypes /\<map\>/ contained
 syn match avroTypes /\<union\>/ contained
 syn match avroTypes /\<fixed\>/ contained
 
+" Syntax: Avro Keywords {{{2
+syn match avroKeywords /\<type\>/ contained
+syn match avroKeywords /\<name\>/ contained
+syn match avroKeywords /\<namespace\>/ contained
+syn match avroKeywords /\<doc\>/ contained
+syn match avroKeywords /\<aliases\>/ contained
+syn match avroKeywords /\<fields\>/ contained
+syn match avroKeywords /\<default\>/ contained
+syn match avroKeywords /\<order\>/ contained
+syn match avroKeywords /\<symbols\>/ contained
+syn match avroKeywords /\<items\>/ contained
+syn match avroKeywords /\<values\>/ contained
+syn match avroKeywords /\<size\>/ contained
+
 " Define the default highlighting. {{{1
 " For version 5.7 and earlier: only when not done already
 " For version 5.8 and later: only when an item doesn't have highlighting yet
@@ -79,6 +93,7 @@ if version >= 508 || !exists("did_avro_syn_inits")
   HiLink jsonNull		Function
   HiLink jsonBoolean		Boolean
   HiLink avroTypes              Type
+  HiLink avroKeywords           Statement
 
   HiLink jsonNumError           Error
   HiLink jsonStringSQ           Error
