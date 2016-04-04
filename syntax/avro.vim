@@ -19,7 +19,7 @@ if !exists("main_syntax")
 endif
 
 " Syntax: Strings {{{2
-syn region  jsonString    start=+"+  skip=+\\\\\|\\"+  end=+"+  contains=jsonEscape
+syn region  jsonString    start=+"+  skip=+\\\\\|\\"+  end=+"+  contains=jsonEscape, avroTypes
 " Syntax: JSON does not allow strings with single quotes, unlike JavaScript.
 syn region  jsonStringSQ  start=+'+  skip=+\\\\\|\\"+  end=+'+
 
@@ -46,7 +46,21 @@ syn keyword jsonNull      null
 syn match   jsonBraces	   "[{}\[\]]"
 
 " Syntax: Avro Types {{{2
-syn keyword avroTypes "null" "boolean" "int" "long" "float" "double" "bytes" "string"
+syn match avroTypes /\<null\>/ contained
+syn match avroTypes /\<boolean\>/ contained
+syn match avroTypes /\<int\>/ contained
+syn match avroTypes /\<long\>/ contained
+syn match avroTypes /\<float\>/ contained
+syn match avroTypes /\<double\>/ contained
+syn match avroTypes /\<bytes\>/ contained
+syn match avroTypes /\<string\>/ contained
+
+syn match avroTypes /\<record\>/ contained
+syn match avroTypes /\<array\>/ contained
+syn match avroTypes /\<enum\>/ contained
+syn match avroTypes /\<map\>/ contained
+syn match avroTypes /\<union\>/ contained
+syn match avroTypes /\<fixed\>/ contained
 
 " Define the default highlighting. {{{1
 " For version 5.7 and earlier: only when not done already
