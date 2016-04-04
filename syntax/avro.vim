@@ -64,6 +64,7 @@ if version >= 508 || !exists("did_avro_syn_inits")
   HiLink jsonBraces		Operator
   HiLink jsonNull		Function
   HiLink jsonBoolean		Boolean
+  HiLink avroTypes              Type
 
   HiLink jsonNumError           Error
   HiLink jsonStringSQ           Error
